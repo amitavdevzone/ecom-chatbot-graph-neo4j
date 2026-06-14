@@ -7,21 +7,21 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "filament/filament": "^5.6.6",
-        "inspector-apm/neuron-ai": "^3.15.6",
-        "laravel/framework": "^13.14",
+        "filament/filament": "^5.6.7",
+        "inspector-apm/neuron-ai": "^3.15.11",
+        "laravel/framework": "^13.15",
         "laravel/tinker": "^3.0.2",
         "laudis/neo4j-php-client": "^3.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24.1",
-        "laravel/boost": "^2.4.9",
+        "laravel/boost": "^2.4.10",
         "laravel/pail": "^1.2.7",
-        "laravel/pao": "^1.1.0",
+        "laravel/pao": "^1.1.1",
         "laravel/pint": "^1.29.1",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.9.4",
-        "pestphp/pest": "^4.7.2",
+        "pestphp/pest": "^4.7.3",
         "pestphp/pest-plugin-laravel": "^4.1"
     },
     "autoload": {
