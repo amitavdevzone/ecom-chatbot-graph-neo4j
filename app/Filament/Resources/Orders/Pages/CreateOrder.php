@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Filament\Resources\Orders\Pages;
+
+use App\Filament\Resources\Orders\OrderResource;
+use Filament\Resources\Pages\CreateRecord;
+
+class CreateOrder extends CreateRecord
+{
+    protected static string $resource = OrderResource::class;
+
+    protected function afterCreate(): void
+    {
+        $this->recalculateTotalAmount();
+    }
+
+    private function recalculateTotalAmount(): void
+    {
+        $this->record->refresh();
+
+        $this->record->update([
+            'total_amount' => $this->record->orderItems->sum(
+                fn ($item): float|int => $item->quantity * $item->price,
+            ),
+        ]);
+    }
+}
