@@ -16,7 +16,7 @@
 
 ## 4. Routing
 
-- [ ] 4.1 Register `POST /api/order-status` in `routes/api.php` with the `ValidateShopToken` middleware applied
+- [x] 4.1 Register `POST /api/order-status` in `routes/api.php` with the `ValidateShopToken` middleware applied
 
 ## 5. Tests
 
