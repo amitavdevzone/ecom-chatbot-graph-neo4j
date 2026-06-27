@@ -95,6 +95,13 @@ services:
     networks:
       - ecom-graph-db
 
+  typesense-dashboard:
+    image: bfritscher/typesense-dashboard
+    ports:
+      - "8109:80"
+    networks:
+      - ecom-graph-db
+
 volumes:
   postgres_data:
   pgadmin_data:

@@ -1,14 +1,14 @@
 ## 1. Docker Compose — Typesense Service
 
-- [ ] 1.1 Add the `typesense` service to `docker-compose.yml` using the `typesense/typesense:latest` image, port `8108:8108`, `TYPESENSE_API_KEY` env var, and data directory argument pointing to `/data`
-- [ ] 1.2 Add a `typesense_data` named volume and mount it at `/data` inside the `typesense` container
-- [ ] 1.3 Add a health check for the `typesense` service using `wget -q --spider http://localhost:8108/health`
-- [ ] 1.4 Connect the `typesense` service to the `ecom-graph-db` network
+- [x] 1.1 Add the `typesense` service to `docker-compose.yml` using the `typesense/typesense:latest` image, port `8108:8108`, `TYPESENSE_API_KEY` env var, and data directory argument pointing to `/data`
+- [x] 1.2 Add a `typesense_data` named volume and mount it at `/data` inside the `typesense` container
+- [x] 1.3 Add a health check for the `typesense` service using `wget -q --spider http://localhost:8108/health`
+- [x] 1.4 Connect the `typesense` service to the `ecom-graph-db` network
 
 ## 2. Docker Compose — Typesense Dashboard Service
 
-- [ ] 2.1 Add the `typesense-dashboard` service to `docker-compose.yml` using the `bfritscher/typesense-dashboard` image, port `8109:80`
-- [ ] 2.2 Connect the `typesense-dashboard` service to the `ecom-graph-db` network
+- [x] 2.1 Add the `typesense-dashboard` service to `docker-compose.yml` using the `bfritscher/typesense-dashboard` image, port `8109:80`
+- [x] 2.2 Connect the `typesense-dashboard` service to the `ecom-graph-db` network
 
 ## 3. Verification
 
