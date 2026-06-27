@@ -91,6 +91,7 @@ class MobileStoreSeeder extends Seeder
             ['name' => 'Alice Chen', 'email' => 'alice@demo.store'],
             ['name' => 'Bob Martinez', 'email' => 'bob@demo.store'],
             ['name' => 'Carol Singh', 'email' => 'carol@demo.store'],
+            ['name' => 'Amitav Roy', 'email' => 'reachme@amitavroy.com'],
         ];
 
         $customers = collect($demoCustomers)->map(
