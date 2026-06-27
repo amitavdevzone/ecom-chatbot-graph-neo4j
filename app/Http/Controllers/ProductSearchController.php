@@ -15,6 +15,8 @@ class ProductSearchController extends Controller
 
         $query = $request->string('query');
 
+        $query = "mobile";
+
         $products = Product::query()
             ->whereLike('name', "%{$query}%")
             ->orWhereLike('description', "%{$query}%")
