@@ -6,8 +6,8 @@
 
 ## 2. API Resources
 
-- [ ] 2.1 Create `OrderItemResource` — fields: `quantity`, `price`, nested `product` with `name` and `category`
-- [ ] 2.2 Create `OrderResource` — fields: `id`, `total_amount`, `created_at`, and `items` as `OrderItemResource::collection($this->orderItems)`
+- [x] 2.1 Create `OrderItemResource` — fields: `quantity`, `price`, nested `product` with `name` and `category`
+- [x] 2.2 Create `OrderResource` — fields: `id`, `total_amount`, `created_at`, and `items` as `OrderItemResource::collection($this->orderItems)`
 
 ## 3. Controller
 
