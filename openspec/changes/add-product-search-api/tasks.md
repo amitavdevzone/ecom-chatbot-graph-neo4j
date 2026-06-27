@@ -1,6 +1,6 @@
 ## 1. API Resource
 
-- [ ] 1.1 Create `app/Http/Resources/ProductResource.php` returning `id`, `name`, `price`, `description`
+- [x] 1.1 Create `app/Http/Resources/ProductResource.php` returning `id`, `name`, `price`, `description`
 
 ## 2. Controller
 
