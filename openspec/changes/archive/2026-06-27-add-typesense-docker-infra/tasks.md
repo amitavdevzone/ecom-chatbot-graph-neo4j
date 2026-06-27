@@ -12,7 +12,7 @@
 
 ## 3. Verification
 
-- [ ] 3.1 Run `docker compose up` and confirm both `typesense` and `typesense-dashboard` containers start without errors
-- [ ] 3.2 Confirm Typesense health endpoint responds: `curl http://localhost:8108/health`
-- [ ] 3.3 Open `http://localhost:8109` in a browser and confirm the Typesense Dashboard UI loads
-- [ ] 3.4 Log into the dashboard using `http://localhost:8108` as the node URL and the configured API key, and confirm it connects successfully
+- [x] 3.1 Run `docker compose up` and confirm both `typesense` and `typesense-dashboard` containers start without errors
+- [x] 3.2 Confirm Typesense health endpoint responds: `curl http://localhost:8108/health`
+- [x] 3.3 Open `http://localhost:8109` in a browser and confirm the Typesense Dashboard UI loads
+- [x] 3.4 Log into the dashboard using `http://localhost:8108` as the node URL and the configured API key, and confirm it connects successfully
