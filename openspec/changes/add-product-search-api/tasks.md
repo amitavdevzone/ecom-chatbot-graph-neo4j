@@ -4,14 +4,14 @@
 
 ## 2. Controller
 
-- [ ] 2.1 Create `app/Http/Controllers/ProductSearchController.php` as an invokable controller
-- [ ] 2.2 Validate `query` as required string via `$request->validate()`
-- [ ] 2.3 Query `Product` with `ILIKE` on `name` and `description`, limit 10
-- [ ] 2.4 Return `ProductResource::collection($products)`
+- [x] 2.1 Create `app/Http/Controllers/ProductSearchController.php` as an invokable controller
+- [x] 2.2 Validate `query` as required string via `$request->validate()`
+- [x] 2.3 Query `Product` with `ILIKE` on `name` and `description`, limit 10
+- [x] 2.4 Return `ProductResource::collection($products)`
 
 ## 3. Route
 
-- [ ] 3.1 Register `POST /api/products/search` in `routes/api.php` with `middleware('shop.token')`
+- [x] 3.1 Register `POST /api/products/search` in `routes/api.php` with `middleware('shop.token')`
 
 ## 4. Tests
 
