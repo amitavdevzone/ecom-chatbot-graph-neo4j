@@ -41,4 +41,8 @@ return [
         'base_url' => env('OPENROUTER_BASE_URL', 'https://openrouter.ai/api/v1'),
     ],
 
+    'laravel-shop-token' => [
+        'access_token' => env('LARAVEL_SHOP_API_TOKEN'),
+    ],
+
 ];
