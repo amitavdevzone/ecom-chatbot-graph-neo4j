@@ -16,10 +16,8 @@ class ProductSearchController extends Controller
         $query = $request->string('query');
 
         $products = Product::query()
-            ->where(function ($q) use ($query) {
-                $q->whereRaw('name ILIKE ?', ["%{$query}%"])
-                    ->orWhereRaw('description ILIKE ?', ["%{$query}%"]);
-            })
+            ->whereLike('name', "%{$query}%")
+            ->orWhereLike('description', "%{$query}%")
             ->limit(10)
             ->get();
 
