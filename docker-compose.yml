@@ -78,10 +78,28 @@ services:
     networks:
       - ecom-graph-db
 
+  typesense:
+    image: typesense/typesense:latest
+    ports:
+      - "8108:8108"
+    environment:
+      TYPESENSE_API_KEY: ${TYPESENSE_API_KEY:-typesense-api-key}
+    command: --data-dir /data
+    volumes:
+      - typesense_data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8108/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - ecom-graph-db
+
 volumes:
   postgres_data:
   pgadmin_data:
   neo4j_data:
+  typesense_data:
 
 networks:
   ecom-graph-db:
