@@ -1,8 +1,8 @@
 ## 1. Middleware
 
-- [ ] 1.1 Create `ValidateShopToken` middleware using `php artisan make:middleware`
-- [ ] 1.2 Implement header check: compare `X-Laravel-Auth-Token` against `config('services.laravel-shop-token.access_token')` using `hash_equals`; return 401 JSON on failure
-- [ ] 1.3 Register the middleware as a named alias in `bootstrap/app.php`
+- [x] 1.1 Create `ValidateShopToken` middleware using `php artisan make:middleware`
+- [x] 1.2 Implement header check: compare `X-Laravel-Auth-Token` against `config('services.laravel-shop-token.access_token')` using `hash_equals`; return 401 JSON on failure
+- [x] 1.3 Register the middleware as a named alias in `bootstrap/app.php`
 
 ## 2. API Resources
 
