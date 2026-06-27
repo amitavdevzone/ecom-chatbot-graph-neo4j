@@ -11,8 +11,8 @@
 
 ## 3. Controller
 
-- [ ] 3.1 Create `OrderStatusController` using `php artisan make:controller`
-- [ ] 3.2 Implement `__invoke` method: validate `email` field, look up `Customer` with eager-loaded `orders.orderItems.product` (latest 5), return `OrderResource::collection`
+- [x] 3.1 Create `OrderStatusController` using `php artisan make:controller`
+- [x] 3.2 Implement `__invoke` method: validate `email` field, look up `Customer` with eager-loaded `orders.orderItems.product` (latest 5), return `OrderResource::collection`
 
 ## 4. Routing
 
