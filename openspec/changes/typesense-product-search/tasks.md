@@ -13,9 +13,9 @@
 
 ## 3. Product Model — Searchable Integration
 
-- [ ] 3.1 Add `use Laravel\Scout\Searchable;` trait to `App\Models\Product`
-- [ ] 3.2 Implement `toSearchableArray()` — cast `id` to string, `category` to enum value, `price` to float, timestamps to int32 unix, `description`/`updated_at` nullable
-- [ ] 3.3 Implement `typesenseCollectionSchema()` — define all fields with correct types, `description` optional, `category` facetable
+- [x] 3.1 Add `use Laravel\Scout\Searchable;` trait to `App\Models\Product`
+- [x] 3.2 Implement `toSearchableArray()` — cast `id` to string, `category` to enum value, `price` to float, timestamps to int32 unix, `description`/`updated_at` nullable
+- [x] 3.3 Implement `typesenseCollectionSchema()` — define all fields with correct types, `description` optional, `category` facetable
 
 ## 4. Bulk Sync Command
 
