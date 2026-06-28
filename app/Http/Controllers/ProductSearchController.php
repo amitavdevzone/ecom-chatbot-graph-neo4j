@@ -11,14 +11,25 @@ class ProductSearchController extends Controller
 {
     public function __invoke(Request $request): AnonymousResourceCollection
     {
-        $request->validate(['query' => ['required', 'string']]);
+        $request->validate([
+            'query' => ['required', 'string'],
+            'filter_by' => ['nullable', 'string'],
+            'sort_by' => ['nullable', 'string'],
+        ]);
 
         $query = $request->string('query');
 
-        $query = 'mobile';
+        $options = array_filter([
+            'filter_by' => $request->input('filter_by'),
+            'sort_by' => $request->input('sort_by'),
+        ]);
 
-        $products = Product::search($query)->take(10)->get();
+        $builder = Product::search($query);
 
-        return ProductResource::collection($products);
+        if (! empty($options)) {
+            $builder->options($options);
+        }
+
+        return ProductResource::collection($builder->take(10)->get());
     }
 }

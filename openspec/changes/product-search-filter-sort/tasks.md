@@ -1,9 +1,9 @@
 ## 1. Controller Update
 
-- [ ] 1.1 Remove the hardcoded `$query = 'mobile';` override from `ProductSearchController::__invoke()`
-- [ ] 1.2 Add validation rules for optional `filter_by` (nullable string) and `sort_by` (nullable string) fields
-- [ ] 1.3 Read `filter_by` and `sort_by` from the request and build a conditional `$options` array
-- [ ] 1.4 Chain `->options($options)` on the Scout search builder when options are present
+- [x] 1.1 Remove the hardcoded `$query = 'mobile';` override from `ProductSearchController::__invoke()`
+- [x] 1.2 Add validation rules for optional `filter_by` (nullable string) and `sort_by` (nullable string) fields
+- [x] 1.3 Read `filter_by` and `sort_by` from the request and build a conditional `$options` array
+- [x] 1.4 Chain `->options($options)` on the Scout search builder when options are present
 
 ## 2. Tests
 
