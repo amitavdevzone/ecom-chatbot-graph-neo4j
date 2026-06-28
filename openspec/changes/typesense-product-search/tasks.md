@@ -22,7 +22,7 @@
 - [x] 4.1 Create `App\Console\Commands\SyncToTypesense` via `php artisan make:command SyncToTypesense`
 - [x] 4.2 Set signature to `typesense:sync-products` and add description
 - [x] 4.3 Implement `handle()` to output info message, call `scout:import "App\Models\Product"`, then output success message
-- [ ] 4.4 Run `php artisan typesense:sync-products` and verify products appear in Typesense dashboard (port 8109)
+- [x] 4.4 Run `php artisan typesense:sync-products` and verify products appear in Typesense dashboard (port 8109)
 
 ## 5. Product Search Controller
 
