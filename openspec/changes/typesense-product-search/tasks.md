@@ -37,4 +37,4 @@
 
 ## 7. Code Style
 
-- [ ] 7.1 Run `vendor/bin/pint --dirty --format agent` on all modified PHP files
+- [x] 7.1 Run `vendor/bin/pint --dirty --format agent` on all modified PHP files
