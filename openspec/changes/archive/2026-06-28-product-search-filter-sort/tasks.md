@@ -15,4 +15,4 @@
 
 ## 3. Spec Sync
 
-- [ ] 3.1 Run `openspec sync-specs --change product-search-filter-sort` to merge the delta spec into the main `openspec/specs/product-search-api/spec.md`
+- [x] 3.1 Run `openspec sync-specs --change product-search-filter-sort` to merge the delta spec into the main `openspec/specs/product-search-api/spec.md`

@@ -40,8 +40,3 @@ The `ProductSearchController` SHALL use `Product::search($query)` to perform ful
 - **WHEN** a POST request is made without the `query` field
 - **THEN** a 422 validation error is returned
 
-## REMOVED Requirements
-
-### Requirement: Hardcoded query override remains in place
-**Reason**: The Typesense index is confirmed populated and the agent's query-builder now provides real queries; the override is no longer needed and prevents meaningful search results.
-**Migration**: Delete the `$query = 'mobile';` line from `ProductSearchController::__invoke()`.
