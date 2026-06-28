@@ -31,9 +31,9 @@
 
 ## 6. Tests
 
-- [ ] 6.1 Write feature test for `typesense:sync-products` command (mock Scout, assert `scout:import` is called)
-- [ ] 6.2 Write feature test for `ProductSearchController` asserting `Product::search()` is used
-- [ ] 6.3 Run `php artisan test --compact` and confirm all tests pass
+- [x] 6.1 Write feature test for `typesense:sync-products` command (mock Scout, assert `scout:import` is called)
+- [x] 6.2 Write feature test for `ProductSearchController` asserting `Product::search()` is used
+- [x] 6.3 Run `php artisan test --compact` and confirm all tests pass
 
 ## 7. Code Style
 
