@@ -16,12 +16,15 @@ Once the stack is running via Docker, the following are available:
 | Recommendation chatbot | http://localhost:8000/recommendations | AI-powered product recommendations |
 | Neo4j browser | http://localhost:7474 | Graph database UI (user: `neo4j`, password: `password`) |
 | PG Admin | http://localhost:5050 | PostgreSQL UI (login: `admin@localhost.com` / `admin`) |
+| Typesense | http://localhost:8108 | Search engine API (API key: `typesense-api-key` by default) |
+| Typesense Dashboard | http://localhost:8109 | Search engine UI |
 
 ## Tech Stack
 
 - **Laravel 13** + **Filament 5** (admin panel)
 - **PostgreSQL 16** — relational data (customers, products, orders, offers)
 - **Neo4j 5** (with APOC) — graph data for recommendations
+- **Typesense 30** + **Laravel Scout** — full-text product search with filter and sort support
 - **NeuronAI** + **OpenRouter** — the AI agent powering the chatbot
 - **Docker Compose** — local development environment
 
@@ -71,7 +74,17 @@ Once the stack is running via Docker, the following are available:
    This wipes and rebuilds the graph from the relational data — customers,
    products, purchases, likes, and pre-computed offer eligibility.
 
-6. Visit **http://localhost:8000/recommendations** to chat with the AI
+6. **Sync products into Typesense** to build the search index:
+
+   ```bash
+   docker compose exec app php artisan typesense:sync-products
+   ```
+
+   This creates the `products` collection if it doesn't exist, then upserts
+   all products. Safe to run multiple times. After this, the product search
+   API and the agentic app's query-builder can both query Typesense.
+
+7. Visit **http://localhost:8000/recommendations** to chat with the AI
    recommendation assistant.
 
 > A `Makefile` helper is provided — run any artisan command with
@@ -126,3 +139,31 @@ several relationships deep. In a relational database that means layered
 joins, subqueries, and aggregations. In Neo4j, the same question is a short,
 readable Cypher pattern — which keeps both the queries and the AI tools that
 wrap them simple.
+
+## How Typesense Powers Product Search
+
+Typesense provides fast, typo-tolerant full-text search over the product catalogue, running as a Docker service alongside the rest of the stack.
+
+### Indexing
+
+The `Product` model uses the `Laravel\Scout\Searchable` trait. Scout observers automatically keep the Typesense `products` collection in sync as products are created, updated, or deleted. The indexed document includes `name`, `description` (searchable), `category` (facetable), `price` (float, sortable and filterable), and timestamps.
+
+For a full wipe-and-reindex, run:
+
+```bash
+php artisan typesense:sync-products
+```
+
+### Product Search API
+
+`POST /api/products/search` — requires `X-Laravel-Auth-Token` header.
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `query` | string | yes | Free-text search against name and description |
+| `filter_by` | string | no | Typesense filter expression, e.g. `price:<1000` |
+| `sort_by` | string | no | Typesense sort expression, e.g. `price:asc` |
+
+Returns up to 10 matching products as `{ data: [{ id, name, price, description }] }`.
+
+The `filter_by` and `sort_by` fields are forwarded directly to Typesense via Scout's `options()` method, enabling the agentic app's LLM query-builder to produce structured, intent-aware searches rather than plain keyword queries.
