@@ -1,8 +1,8 @@
 ## 1. Database & Model Prep
 
-- [ ] 1.1 Create migration to add `updated_at` column (nullable) to the `products` table
-- [ ] 1.2 Remove `public const UPDATED_AT = null` from `App\Models\Product`
-- [ ] 1.3 Run migration and verify column exists
+- [x] 1.1 Create migration to add `updated_at` column (nullable) to the `products` table
+- [x] 1.2 Remove `public const UPDATED_AT = null` from `App\Models\Product`
+- [x] 1.3 Run migration and verify column exists
 
 ## 2. Install & Configure Scout
 

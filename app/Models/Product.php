@@ -15,8 +15,6 @@ class Product extends Model
     /** @use HasFactory<ProductFactory> */
     use HasFactory;
 
-    public const UPDATED_AT = null;
-
     /**
      * @return HasMany<OrderItem, $this>
      */
