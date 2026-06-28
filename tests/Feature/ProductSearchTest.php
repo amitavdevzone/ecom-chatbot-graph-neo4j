@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ProductCategory;
 use App\Models\Product;
 use App\Services\GraphSyncService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,11 +15,11 @@ beforeEach(function () {
 it('returns matching products with correct fields for a valid query', function () {
     $product = Product::factory()->create([
         'name' => 'Samsung Galaxy A54',
-        'description' => 'A great android phone',
+        'description' => 'A great mobile phone',
         'price' => '349.99',
     ]);
 
-    $this->postJson('/api/products/search', ['query' => 'Samsung'], ['X-Laravel-Auth-Token' => 'test-secret'])
+    $this->postJson('/api/products/search', ['query' => 'mobile'], ['X-Laravel-Auth-Token' => 'test-secret'])
         ->assertOk()
         ->assertJsonStructure(['data' => ['*' => ['id', 'name', 'price', 'description']]])
         ->assertJsonPath('data.0.id', $product->id)
@@ -30,7 +31,7 @@ it('returns a product matched by description only', function () {
         'name' => 'Generic Device',
         'description' => 'Perfect for mobile gaming sessions',
     ]);
-    Product::factory()->create(['name' => 'Unrelated', 'description' => 'Nothing special']);
+    Product::factory()->create(['name' => 'Unrelated', 'description' => 'Nothing special', 'category' => ProductCategory::Charger]);
 
     $response = $this->postJson('/api/products/search', ['query' => 'mobile gaming'], ['X-Laravel-Auth-Token' => 'test-secret']);
 
@@ -49,9 +50,9 @@ it('returns an empty data array when no products match', function () {
 });
 
 it('caps results at 10 when more than 10 products match', function () {
-    Product::factory()->count(15)->create(['name' => 'Matching Phone', 'description' => 'android device']);
+    Product::factory()->count(15)->create(['name' => 'Mobile Phone', 'description' => 'android mobile device']);
 
-    $response = $this->postJson('/api/products/search', ['query' => 'Matching'], ['X-Laravel-Auth-Token' => 'test-secret']);
+    $response = $this->postJson('/api/products/search', ['query' => 'mobile'], ['X-Laravel-Auth-Token' => 'test-secret']);
 
     $response->assertOk();
     expect($response->json('data'))->toHaveCount(10);

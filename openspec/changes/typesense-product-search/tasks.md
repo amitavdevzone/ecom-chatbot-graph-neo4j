@@ -26,8 +26,8 @@
 
 ## 5. Product Search Controller
 
-- [ ] 5.1 Replace `Product::query()->whereLike(...)` in `ProductSearchController` with `Product::search($query)`
-- [ ] 5.2 Keep the hardcoded `$query = "mobile"` override in place
+- [x] 5.1 Replace `Product::query()->whereLike(...)` in `ProductSearchController` with `Product::search($query)`
+- [x] 5.2 Keep the hardcoded `$query = "mobile"` override in place
 
 ## 6. Tests
 
