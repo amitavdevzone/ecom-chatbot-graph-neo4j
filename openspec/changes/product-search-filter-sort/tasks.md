@@ -7,11 +7,11 @@
 
 ## 2. Tests
 
-- [ ] 2.1 Update the existing feature test to assert the hardcoded `"mobile"` override is gone (query is passed through as-is)
-- [ ] 2.2 Add a test that sends `filter_by` and verifies it is forwarded to Typesense (mock Scout or use a fake)
-- [ ] 2.3 Add a test that sends `sort_by` and verifies it is forwarded
-- [ ] 2.4 Add a test that sends both `filter_by` and `sort_by` together
-- [ ] 2.5 Add a test that omits both fields and verifies the search still works with only `query`
+- [x] 2.1 Update the existing feature test to assert the hardcoded `"mobile"` override is gone (query is passed through as-is)
+- [x] 2.2 Add a test that sends `filter_by` and verifies it is forwarded to Typesense (mock Scout or use a fake)
+- [x] 2.3 Add a test that sends `sort_by` and verifies it is forwarded
+- [x] 2.4 Add a test that sends both `filter_by` and `sort_by` together
+- [x] 2.5 Add a test that omits both fields and verifies the search still works with only `query`
 
 ## 3. Spec Sync
 

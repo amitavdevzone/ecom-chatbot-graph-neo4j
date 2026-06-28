@@ -26,6 +26,23 @@ it('returns matching products with correct fields for a valid query', function (
         ->assertJsonPath('data.0.name', 'Samsung Galaxy A54');
 });
 
+it('passes the query through without a hardcoded override', function () {
+    $laptop = Product::factory()->create([
+        'name' => 'Dell XPS Laptop',
+        'description' => 'A powerful laptop for professionals',
+    ]);
+    Product::factory()->create([
+        'name' => 'Samsung Mobile',
+        'description' => 'A great mobile phone',
+    ]);
+
+    $response = $this->postJson('/api/products/search', ['query' => 'laptop'], ['X-Laravel-Auth-Token' => 'test-secret'])
+        ->assertOk();
+
+    $ids = collect($response->json('data'))->pluck('id');
+    expect($ids)->toContain($laptop->id);
+});
+
 it('returns a product matched by description only', function () {
     $product = Product::factory()->create([
         'name' => 'Generic Device',
@@ -78,4 +95,54 @@ it('returns 401 when auth token is missing', function () {
 it('returns 401 when auth token is invalid', function () {
     $this->postJson('/api/products/search', ['query' => 'phone'], ['X-Laravel-Auth-Token' => 'wrong-token'])
         ->assertUnauthorized();
+});
+
+it('accepts filter_by without a validation error', function () {
+    Product::factory()->create(['name' => 'Wireless Headphones', 'description' => 'noise cancelling headphones']);
+
+    $this->postJson('/api/products/search', [
+        'query' => 'headphones',
+        'filter_by' => 'price:<500',
+    ], ['X-Laravel-Auth-Token' => 'test-secret'])
+        ->assertOk()
+        ->assertJsonStructure(['data']);
+});
+
+it('accepts sort_by without a validation error', function () {
+    Product::factory()->create(['name' => 'Gaming Mouse', 'description' => 'precision gaming mouse']);
+
+    $this->postJson('/api/products/search', [
+        'query' => 'mouse',
+        'sort_by' => 'price:asc',
+    ], ['X-Laravel-Auth-Token' => 'test-secret'])
+        ->assertOk()
+        ->assertJsonStructure(['data']);
+});
+
+it('accepts both filter_by and sort_by without a validation error', function () {
+    Product::factory()->create(['name' => 'USB-C Charger', 'description' => 'fast charging USB-C charger']);
+
+    $this->postJson('/api/products/search', [
+        'query' => 'charger',
+        'filter_by' => 'price:<100',
+        'sort_by' => 'price:asc',
+    ], ['X-Laravel-Auth-Token' => 'test-secret'])
+        ->assertOk()
+        ->assertJsonStructure(['data']);
+});
+
+it('performs a search with only query when filter_by and sort_by are omitted', function () {
+    $product = Product::factory()->create([
+        'name' => 'Bluetooth Speaker',
+        'description' => 'portable bluetooth speaker',
+    ]);
+
+    $response = $this->postJson('/api/products/search', [
+        'query' => 'bluetooth',
+    ], ['X-Laravel-Auth-Token' => 'test-secret'])
+        ->assertOk()
+        ->assertJsonStructure(['data']);
+
+    $ids = collect($response->json('data'))->pluck('id');
+    expect($ids)->toContain($product->id);
 });
