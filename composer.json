@@ -11,8 +11,10 @@
         "inspector-apm/neuron-ai": "^3.15.17",
         "laravel/framework": "^13.17",
         "laravel/sanctum": "^4.3.2",
+        "laravel/scout": "^11.3",
         "laravel/tinker": "^3.0.2",
-        "laudis/neo4j-php-client": "^3.6"
+        "laudis/neo4j-php-client": "^3.6",
+        "typesense/typesense-php": "^6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24.1",

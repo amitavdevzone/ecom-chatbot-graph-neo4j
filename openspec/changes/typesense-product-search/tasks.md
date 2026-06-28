@@ -6,10 +6,10 @@
 
 ## 2. Install & Configure Scout
 
-- [ ] 2.1 Run `composer require laravel/scout typesense/typesense-php`
-- [ ] 2.2 Publish Scout config: `php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"`
-- [ ] 2.3 Configure `config/scout.php` with Typesense driver settings (host, port, api_key, collection schema source)
-- [ ] 2.4 Add `SCOUT_DRIVER=typesense`, `TYPESENSE_API_KEY`, `TYPESENSE_HOST`, `TYPESENSE_PORT=8108` to `.env` and `.env.example`
+- [x] 2.1 Run `composer require laravel/scout typesense/typesense-php`
+- [x] 2.2 Publish Scout config: `php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"`
+- [x] 2.3 Configure `config/scout.php` with Typesense driver settings (host, port, api_key, collection schema source)
+- [x] 2.4 Add `SCOUT_DRIVER=typesense`, `TYPESENSE_API_KEY`, `TYPESENSE_HOST`, `TYPESENSE_PORT=8108` to `.env` and `.env.example`
 
 ## 3. Product Model — Searchable Integration
 
