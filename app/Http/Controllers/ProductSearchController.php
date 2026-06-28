@@ -24,6 +24,12 @@ class ProductSearchController extends Controller
             'sort_by' => $request->input('sort_by'),
         ]);
 
+        logger()->info('search data', [
+            'query' => $query,
+            'filter_by' => $request->input('filter_by'),
+            'sort_by' => $request->input('sort_by'),
+        ]);
+
         $builder = Product::search($query);
 
         if (! empty($options)) {
